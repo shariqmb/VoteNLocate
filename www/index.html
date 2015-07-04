@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script src="scripts/Framework/jquery-1.11.2.min.js"></script>
+    <script src="JQM/jquery.mobile-1.4.5.js"></script>
+    <link href="JQM/jquery.mobile-1.4.5.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-role="page" data-add-back-btn="true" id="MapPage">
+        <div data-role="header" id="headerMap" style="height: 41px;">
+            <h1>Maps</h1>
+            <a href="Pages/HistoricalData.html" class="ui-btn-right">H</a>
+        </div>
+        <iframe src="Pages/MainPage.html" width="100%" onload="this.height = $(window).height()-78"></iframe>
+        <div data-role="footer">
+            <div id="location" style="text-align: center;">
+                Text 2
+            </div>
+        </div>
+    </div>
+</body>
+</html>
