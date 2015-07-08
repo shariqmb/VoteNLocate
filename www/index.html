@@ -2,28 +2,96 @@
 <html>
 <head>
     <title></title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="scripts/Framework/jquery-1.11.2.min.js"></script>
     <script src="JQM/jquery.mobile-1.4.5.js"></script>
+    <!--<script src="cardova.js"></script>
+    <script src="scripts/gpsDetectionPlugin.js"></script>-->
+    <script src="scripts/index.js"></script>
+    <script src="scripts/vote.js"></script>
     <link href="JQM/jquery.mobile-1.4.5.css" rel="stylesheet" />
-    <script>
-        function back() {
-            $.mobile.back();
-        }
-    </script>
+    <link href="css/index.css" rel="stylesheet" />
 </head>
 <body>
+    <div data-role="page" id="SplashScreen">
+        <table align="center">
+            <tr>
+                <td>
+                    <img src="images/icon.png" alt="Logo Image" style="width: 100px; height: 50px" /></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="images/icon.png" alt="Publicity Image" style="width: 100px; height: 150px" />
+                </td>
+            </tr>
+        </table>
+    </div>
     <div data-role="page" data-add-back-btn="true" id="MapPage">
         <div data-role="header" id="headerMap" style="height: 41px;">
             <h1>Maps</h1>
-            <a href="Pages/HistoricalData.html" class="ui-btn-right">H</a>
+            <a href="#HistoricalMap" class="ui-btn-right">H</a>
         </div>
-        <iframe src="Pages/MainPage.html" width="100%" onload="this.height = $(window).height()-78"></iframe>
-        <div data-role="footer">
-            <div id="location" style="text-align: center;">
-                Text 2
+        <div id="map"></div>
+        <div class="triangle-bottomright"></div>
+        <div data-role="footer" data-position="fixed">
+            <div style="text-align: center;">
+                <a href="#VotePopUp" data-rel="dialog" data-transition="flip">Text 2</a>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" data-add-back-btn="true" id="HistoricalMap">
+        <div data-role="header" style="height: 41px;">
+            <h1>Historical Map</h1>
+            <a href="javascript:back();" data-icon="back" class="ui-btn-right">Back</a>
+        </div>
+        <iframe src="Pages/HistoricalMap.html" width="100%" onload="this.height = $(window).height()-54"></iframe>
+        <div class="triangle-bottomright"></div>
+    </div>
+    <div data-role="dialog" id="VotePopUp">
+        <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+        <div role="main" class="ui-content">
+            <div>
+                <label>Text 5</label>
+            </div>
+            <div data-role="controlgroup" style="float: right;">
+                <input class="round" type="button" value="10" />
+                <input class="round" type="button" value="9" />
+                <input class="round" type="button" value="8" />
+                <input class="round" type="button" value="7" />
+                <input class="round" type="button" value="6" />
+                <input class="round" type="button" value="5" />
+                <input class="round" type="button" value="4" />
+                <input class="round" type="button" value="3" />
+                <input class="round" type="button" value="2" />
+                <input class="round" type="button" value="1" />
+            </div>
+            <div style="float: left;">
+                <input type="range" id="sliderDensity" min="1" max="100" value="50" />
+            </div>
+            <div>
+                <a id="opendialog" data-role="button">Text 4</a>
             </div>
         </div>
     </div>
 </body>
+<!--<script type="text/javascript">
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        gpsDetect = cordova.require('cordova/plugin/gpsDetectionPlugin');
+        gpsDetect.checkGPS(onGPSSuccess, onGPSError);
+        function onGPSSuccess(on) {
+            if (!on) {
+                alert("Your GPS is disable.");
+            }
+        }
+        function onGPSError(e) {
+            alert("Error : " + e);
+        }
+    }
+</script>-->
 </html>
