@@ -21,12 +21,48 @@
         box-shadow: 0px 0px 5px rgba(0,0,0, .75);
     }
 
-.triangle-bottomright {
+#dialogTable td {
+    text-align: center;
+}
+
+.triangle-bottomright-main {
     width: 0;
     height: 0;
     border-bottom: 100px solid red;
     border-left: 100px solid transparent;
-    position: absolute;
+    position: fixed;
+    bottom: 22px;
+    right: 0;
+}
+
+.triangle-bottomright-hist {
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid red;
+    border-left: 100px solid transparent;
+    position: fixed;
     bottom: 0;
     right: 0;
+}
+
+.pageTop {
+    position: fixed;
+    top: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+.pageBottom {
+    position: fixed;
+    bottom: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+.ui-loader {
+    z-index: 9999;
+}
+#popupDialog-screen {
+    height: 480px !important;
 }

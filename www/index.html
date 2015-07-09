@@ -3,95 +3,132 @@
 <head>
     <title></title>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
     <script src="scripts/Framework/jquery-1.11.2.min.js"></script>
     <script src="JQM/jquery.mobile-1.4.5.js"></script>
-    <!--<script src="cardova.js"></script>
-    <script src="scripts/gpsDetectionPlugin.js"></script>-->
     <script src="scripts/index.js"></script>
-    <script src="scripts/vote.js"></script>
     <link href="JQM/jquery.mobile-1.4.5.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
 </head>
 <body>
+    <!--Splash -->
     <div data-role="page" id="SplashScreen">
-        <table align="center">
-            <tr>
-                <td>
-                    <img src="images/icon.png" alt="Logo Image" style="width: 100px; height: 50px" /></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="images/icon.png" alt="Publicity Image" style="width: 100px; height: 150px" />
-                </td>
-            </tr>
-        </table>
+        <div class="pageTop">
+            <img src="images/image.png" id="LogoSplash" height="100" />
+        </div>
+        <div class="pageBottom">
+            <img src="images/image.png" id="PublicitySplash" height="200" />
+        </div>
     </div>
-    <div data-role="page" data-add-back-btn="true" id="MapPage">
+    <!--End Splash-->
+    <!--Main Map-->
+    <div data-role="page" data-add-back-btn="false" id="MapPage" style="overflow: hidden;">
         <div data-role="header" id="headerMap" style="height: 41px;">
-            <h1>Maps</h1>
+            <div style="text-align: center;">
+                <img src="images/image.png" width="150" height="40" />
+            </div>
             <a href="#HistoricalMap" class="ui-btn-right">H</a>
         </div>
         <div id="map"></div>
-        <div class="triangle-bottomright"></div>
+        <div style="position: absolute; bottom: 22px; left: 0;">Text 1</div>
+        <div class="triangle-bottomright-main"></div>
         <div data-role="footer" data-position="fixed">
             <div style="text-align: center;">
-                <a href="#VotePopUp" data-rel="dialog" data-transition="flip">Text 2</a>
+                <a href="#VotePopUp" data-rel="dialog" data-transition="flip" data-role="none">Text 2</a>
             </div>
         </div>
     </div>
-    <div data-role="page" data-add-back-btn="true" id="HistoricalMap">
+    <!--End Main Map-->
+    <!--Historical Map-->
+    <div data-role="page" data-add-back-btn="true" id="HistoricalMap" style="overflow: hidden;">
         <div data-role="header" style="height: 41px;">
-            <h1>Historical Map</h1>
+            <div style="text-align: center;">
+                <img src="images/image.png" width="150" height="40" />
+            </div>
             <a href="javascript:back();" data-icon="back" class="ui-btn-right">Back</a>
         </div>
-        <iframe src="Pages/HistoricalMap.html" width="100%" onload="this.height = $(window).height()-54"></iframe>
-        <div class="triangle-bottomright"></div>
+        <iframe src="Pages/HistoricalMap.html" width="100%" onload="this.height = $(window).height()-52"></iframe>
+        <div style="position: absolute; bottom: 0; left: 0;">Text 3</div>
+        <div class="triangle-bottomright-hist"></div>
     </div>
+    <!--End Historical Map-->
+    <!--Vote PopUp-->
     <div data-role="dialog" id="VotePopUp">
         <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-        <div role="main" class="ui-content">
-            <div>
-                <label>Text 5</label>
+        <table id="dialogTable" style="width: 100%; padding-bottom: 20px; padding-top: 20px; height: 480px;">
+            <tr>
+                <td>Text 5</td>
+                <td>
+                    <img src="images/image.png" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="round" type="button" value="10" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="round" type="button" value="9" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="round" type="button" value="8" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="round" type="button" value="50" data-role="none" /></td>
+                <td>
+                    <input class="round" type="button" value="7" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="round" type="button" value="6" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="range" id="sliderDensity" min="1" max="100" value="50" data-role="none" /></td>
+                <td>
+                    <input class="round" type="button" value="5" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="round" type="button" value="4" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="round" type="button" value="3" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Text 4</a>
+                    <!--<a id="opendialog" data-role="none"></a>-->
+                </td>
+                <td>
+                    <input class="round" type="button" value="2" data-role="none" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="round" type="button" value="1" data-role="none" /></td>
+            </tr>
+        </table>
+
+        <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
+            <div data-role="header" data-theme="a">
+                <h1>Text 6</h1>
             </div>
-            <div data-role="controlgroup" style="float: right;">
-                <input class="round" type="button" value="10" />
-                <input class="round" type="button" value="9" />
-                <input class="round" type="button" value="8" />
-                <input class="round" type="button" value="7" />
-                <input class="round" type="button" value="6" />
-                <input class="round" type="button" value="5" />
-                <input class="round" type="button" value="4" />
-                <input class="round" type="button" value="3" />
-                <input class="round" type="button" value="2" />
-                <input class="round" type="button" value="1" />
-            </div>
-            <div style="float: left;">
-                <input type="range" id="sliderDensity" min="1" max="100" value="50" />
-            </div>
-            <div>
-                <a id="opendialog" data-role="button">Text 4</a>
+            <div role="main" class="ui-content">
+                <h3 class="ui-title">Text 7</h3>
+                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Text 8</a>
+                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Text 9</a>
             </div>
         </div>
     </div>
+    <!--End Vote PopUp-->
 </body>
-<!--<script type="text/javascript">
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    function onDeviceReady() {
-        gpsDetect = cordova.require('cordova/plugin/gpsDetectionPlugin');
-        gpsDetect.checkGPS(onGPSSuccess, onGPSError);
-        function onGPSSuccess(on) {
-            if (!on) {
-                alert("Your GPS is disable.");
-            }
-        }
-        function onGPSError(e) {
-            alert("Error : " + e);
-        }
-    }
-</script>-->
 </html>

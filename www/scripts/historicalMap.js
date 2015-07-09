@@ -1,4 +1,4 @@
-﻿var startZoom = 8;
+﻿var startZoom = 15;
 var map;
 
 function initialize() {
@@ -10,8 +10,9 @@ function initialize() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            addMarker(map, pos, '', '')
+            addMarker(map, pos, '', '');
             map.setCenter(pos);
+            google.maps.event.trigger(map, "resize");
         }, function () {
             handleNoGeolocation(true);
         });
