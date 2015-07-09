@@ -12,7 +12,7 @@ $(document).on("deviceready", function () {
 $(document).on('pagebeforecreate', '[data-role="page"]', function () {
     setTimeout(function () {
         $.mobile.loading('show');
-    }, 1);
+    }, 100);
 });
 
 $(document).on('pageshow', '[data-role="page"]', function () {
@@ -24,7 +24,7 @@ $(document).on('pageshow', '[data-role="page"]', function () {
 $(document).delegate("#SplashScreen", "pageinit", function () {
     $("#LogoSplash").width($(window).width() - 30);
     $("#PublicitySplash").width($(window).width() - 30);
-    setTimeout(hideSplash, 500);
+    setTimeout(hideSplash, 2000);
     function hideSplash() {
         $.mobile.changePage("#MapPage");
     }
