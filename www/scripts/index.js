@@ -12,7 +12,7 @@ $(document).on("deviceready", function () {
 $(document).on('pagebeforecreate', '[data-role="page"]', function () {
     setTimeout(function () {
         $.mobile.loading('show');
-    }, 100);
+    }, 1);
 });
 
 $(document).on('pageshow', '[data-role="page"]', function () {
