@@ -6,7 +6,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
     <script src="scripts/Framework/jquery-1.11.2.min.js"></script>
     <script src="JQM/jquery.mobile-1.4.5.js"></script>
+    <script src="scripts/appSetting.js"></script>
     <script src="scripts/index.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script src="scripts/helpingMethods.js"></script>
     <link href="JQM/jquery.mobile-1.4.5.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
 </head>
@@ -17,7 +20,7 @@
             <img src="images/image.png" id="LogoSplash" height="100" />
         </div>
         <div class="pageBottom">
-            <img src="images/image.png" id="PublicitySplash" height="200" />
+            <img src="images/image.png" id="PublicitySplash" height="250" />
         </div>
     </div>
     <!--End Splash-->
@@ -25,16 +28,16 @@
     <div data-role="page" data-add-back-btn="false" id="MapPage" style="overflow: hidden;">
         <div data-role="header" id="headerMap" style="height: 41px;">
             <div style="text-align: center;">
-                <img src="images/image.png" width="150" height="40" />
+                <img src="images/image.png" width="50" height="40" />
             </div>
             <a href="#HistoricalMap" class="ui-btn-right">H</a>
         </div>
         <div id="map"></div>
-        <div style="position: absolute; bottom: 22px; left: 0;">Text 1</div>
+        <div style="position: fixed; bottom: 50px; left: 0;">Text 1</div>
         <div class="triangle-bottomright-main"></div>
-        <div data-role="footer" data-position="fixed">
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
             <div style="text-align: center;">
-                <a href="#VotePopUp" data-rel="dialog" data-transition="flip" data-role="none">Text 2</a>
+                <a href="#VotePopUp" data-rel="dialog" data-transition="none" data-role="button">Text 2</a>
             </div>
         </div>
     </div>
@@ -43,89 +46,96 @@
     <div data-role="page" data-add-back-btn="true" id="HistoricalMap" style="overflow: hidden;">
         <div data-role="header" style="height: 41px;">
             <div style="text-align: center;">
-                <img src="images/image.png" width="150" height="40" />
+                <img src="images/image.png" width="50" height="40" />
             </div>
             <a href="javascript:back();" data-icon="back" class="ui-btn-right">Back</a>
         </div>
-        <iframe src="Pages/HistoricalMap.html" width="100%" onload="this.height = $(window).height()-52"></iframe>
-        <div style="position: absolute; bottom: 0; left: 0;">Text 3</div>
+        <iframe src="Pages/HistoricalMap.html" width="100%" onload="this.height = $(window).height()"></iframe>
+        <div style="position: fixed; bottom: 0; left: 0;">Text 3</div>
         <div class="triangle-bottomright-hist"></div>
     </div>
     <!--End Historical Map-->
     <!--Vote PopUp-->
     <div data-role="dialog" id="VotePopUp">
         <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-        <table id="dialogTable" style="width: 100%; padding-bottom: 20px; padding-top: 20px; height: 480px;">
+        <table id="dialogTable" style="width: 100%; padding-bottom: 20px; padding-top: 20px; height: 480px; border: 1px solid;">
             <tr>
-                <td>Text 5</td>
+                <td id="spanPopUpHead">Text 5</td>
                 <td>
-                    <img src="images/image.png" /></td>
+                    <img id="imgPopUpTop" src="images/image.png" /></td>
             </tr>
             <tr>
-                <td></td>
-                <td>
-                    <input class="round" type="button" value="10" data-role="none" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input class="round" type="button" value="9" data-role="none" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input class="round" type="button" value="8" data-role="none" /></td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="round" type="button" value="50" data-role="none" /></td>
-                <td>
-                    <input class="round" type="button" value="7" data-role="none" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input class="round" type="button" value="6" data-role="none" /></td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="range" id="sliderDensity" min="1" max="100" value="50" data-role="none" /></td>
-                <td>
-                    <input class="round" type="button" value="5" data-role="none" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input class="round" type="button" value="4" data-role="none" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input class="round" type="button" value="3" data-role="none" /></td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Text 4</a>
-                    <!--<a id="opendialog" data-role="none"></a>-->
+                <td rowspan="10">
+                    <div style="height: 150px;">
+                        <input id="sliderDensityValue" class="round" type="button" value="50" data-role="none" />
+                    </div>
+                    <div style="height: 50px;">
+                        <input type="range" id="sliderDensity" min="1" max="100" value="50" data-role="none" />
+                    </div>
+                    <div style="height: 50px;">
+                        <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Text 4</a>
+                    </div>
                 </td>
                 <td>
-                    <input class="round" type="button" value="2" data-role="none" /></td>
+                    <input class="round" type="button" value="10" data-role="none" style="background-color: #E4002B; border: 1px solid #E4002B;" />
+                </td>
             </tr>
             <tr>
-                <td></td>
                 <td>
-                    <input class="round" type="button" value="1" data-role="none" /></td>
+                    <input class="round" type="button" value="9" data-role="none" style="background-color: #D50032; border: 1px solid #D50032;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="round" type="button" value="8" data-role="none" style="background-color: #DF4661; border: 1px solid #DF4661;" />
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <input class="round" type="button" value="7" data-role="none" style="background-color: #E35205; border: 1px solid #E35205;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="round" type="button" value="6" data-role="none" style="background-color: #FF671F; border: 1px solid #FF671F;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="round" type="button" value="5" data-role="none" style="background-color: #FF7F41; border: 1px solid #FF7F41;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="round" type="button" value="4" data-role="none" style="background-color: #A7A4E0; border: 1px solid #A7A4E0;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="round" type="button" value="3" data-role="none" style="background-color: #8B84D7; border: 1px solid #8B84D7;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="round" type="button" value="2" data-role="none" style="background-color: #685BC7; border: 1px solid #685BC7;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="round" type="button" value="1" data-role="none" style="background-color: #2E008B; border: 1px solid #2E008B;" />
+                </td>
             </tr>
         </table>
 
         <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
             <div data-role="header" data-theme="a">
-                <h1>Text 6</h1>
+                <h1 id="btnAlertMainHead">Text 6</h1>
             </div>
             <div role="main" class="ui-content">
-                <h3 class="ui-title">Text 7</h3>
-                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Text 8</a>
-                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Text 9</a>
+                <h3 id="spanAlertSubHead" class="ui-title">Text 7</h3>
+                <a id="btnAlertLeft" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Text 8</a>
+                <a id="btnAlertRight" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Text 9</a>
             </div>
         </div>
     </div>

@@ -10,8 +10,7 @@ function initialize() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            addMarker(map, pos, '', '');
-            map.setCenter(pos);
+            addMarker(map, pos);
             google.maps.event.trigger(map, "resize");
         }, function () {
             handleNoGeolocation(true);
@@ -36,14 +35,14 @@ function handleNoGeolocation(errorFlag) {
     map.setCenter(options.position);
 }
 
-function addMarker(map, latlong, title, content) {
+function addMarker(map, latlong) {
     var markerOptions = {
         position: latlong,
         map: map,
-        title: title,
-        clickable: true
+        clickable: false
     };
     var marker = new google.maps.Marker(markerOptions);
+    map.setCenter(latlong);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
