@@ -51,21 +51,21 @@
 }
 
 #popupDialog-screen {
-    height: 480px !important;
+    height: 513px !important;
 }
 
-.ui-dialog-background {
+/*.ui-dialog-background {
     opacity: 0.5;
     display: block !important;
     -webkit-transition: opacity 0s ease-in;
 }
 
     .ui-dialog-background.pop.in {
-        opacity: 1;
+        opacity: 0.5;
         -webkit-transition: opacity 0s ease-in;
     }
 
 .ui-dialog {
     min-height: 100% !important;
     background: transparent !important;
-}
+}*/

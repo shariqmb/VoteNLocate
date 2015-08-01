@@ -1,5 +1,12 @@
 ﻿$(document).on("deviceready", function () {
-
+    document.addEventListener("backbutton", function (e) {
+        if ($.mobile.activePage.is('#MapPage')) {
+            navigator.app.exitApp();
+        }
+        else {
+            navigator.app.backHistory()
+        }
+    }, false);
 });
 
 $(document).bind("mobileinit", function () {
