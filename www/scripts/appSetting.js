@@ -54,6 +54,13 @@ function checkConnection() {
     states[Connection.CELL_4G] = 'Cell 4G connection';
     states[Connection.CELL] = 'Cell generic connection';
     states[Connection.NONE] = 'No network connection';
-    if (states[networkState] == 'No network connection')
-        alert('Please turn on device internet');
+    if (states[networkState] == 'No network connection') {
+        if (confirm('Please turn on internet')) {
+            checkConnection();
+            return;
+        }
+        else {
+            navigator.app.exitApp();
+        }
+    }
 }

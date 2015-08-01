@@ -15,13 +15,13 @@ $(document).delegate("#MapPage", "pageinit", function () {
     votingTime = localStorage.getItem('voteTime');
     //$('#content').height(getRealContentHeight());
     initialize();
-    //getAllCustomerVotes(markCustomerVotes);
-    //if (typeof votingTime != "undefined" && !hasVote) {
-    //    elapsedTime = votingTime - Date.now() / 60000;
-    //    if (parseInt(elapsedTime) >= 20) {
+    getAllCustomerVotes(markCustomerVotes);
+    if (typeof votingTime != "undefined" && !hasVote) {
+        elapsedTime = votingTime - Date.now() / 60000;
+        if (parseInt(elapsedTime) >= 20) {
 
-    //    }
-    //}
+        }
+    }
 });
 
 $(document).delegate("#VotePopUp", "pageinit", function () {
@@ -41,7 +41,7 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
     });
     $(document).on("vclick", "#btnAlertRight", function () {
         var vote = { Latitude: customerPos.coords.latitude, Longitude: customerPos.coords.longitude, DensityValue: densityValue, QualityValue: qualityValue };
-        //setUserVote(vote);
+        setUserVote(vote);
         localStorage.setItem('voteTime', Date.now());
     });
 });

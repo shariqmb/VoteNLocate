@@ -32,7 +32,7 @@ function markCustomerVotes(result) {
 
 function LoadPopUp() {
     SetSlider();
-    //getText(5, setDialogText);
+    getText(5, setDialogText);
 }
 
 function setDialogText(result) {
