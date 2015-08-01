@@ -3,9 +3,6 @@
         if ($.mobile.activePage.is('#MapPage')) {
             navigator.app.exitApp();
         }
-        else {
-            navigator.app.backHistory()
-        }
     }, false);
 });
 
