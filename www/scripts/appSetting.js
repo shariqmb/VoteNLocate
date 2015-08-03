@@ -57,7 +57,6 @@ function checkConnection() {
     if (states[networkState] == 'No network connection') {
         if (confirm('Please turn on internet')) {
             checkConnection();
-            return;
         }
         else {
             navigator.app.exitApp();

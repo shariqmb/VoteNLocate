@@ -3,7 +3,19 @@ var map, customerPos, qualityValue, densityValue, colorPicker;
 function initialize() {
     $("#map").height($(window).height() - 65);
     var mapOptions = {
-        zoom: startZoom
+        zoom: startZoom,
+        zoomControl: true,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL,
+            position: google.maps.ControlPosition.RIGHT_CENTER
+        },
+        mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP],
+            style: google.maps.MapTypeControlStyle.DEFAULT
+        },
+        scaleControl: false,
+        panControl: false,
+        streetViewControl: false
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
