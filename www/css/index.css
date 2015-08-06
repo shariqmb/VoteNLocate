@@ -82,94 +82,24 @@
     color: #fff /*{b-bup-color}*/ !important;
     text-shadow: 0 /*{b-bup-shadow-x}*/ 1px /*{b-bup-shadow-y}*/ 0 /*{b-bup-shadow-radius}*/ #111 /*{b-bup-shadow-color}*/ !important;
 }
-
-input[type=range] {
-    -webkit-appearance: none;
-    width: 50%;
-}
-
-    input[type=range]::-webkit-slider-runnable-track {
-        width: 50%;
-        height: 5px;
-        background: #000;
-        border: none;
-        border-radius: 3px;
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        border: none;
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        background: goldenrod;
-        margin-top: -4px;
-    }
-
-    input[type=range]:focus {
-        outline: none;
-    }
-
-        input[type=range]:focus::-webkit-slider-runnable-track {
-            background: #000;
+ input[type='range'] {
+            -webkit-appearance: none;
+            width: 50%;
+            border-radius: 4px;
+            height: 5px;
+            border-color: #1f1f1f; 
+            border-style: solid; 
+            border-width: 1px;
         }
 
-    input[type=range]::-moz-range-track {
-        width: 50px;
-        height: 5px;
-        background: #000;
-        border: none;
-        border-radius: 3px;
-    }
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none !important;
+            -webkit-border-radius: 2px;
+            background-color: goldenrod;
+            height: 21px;
+            width: 9px;
+        }
 
-    input[type=range]::-moz-range-thumb {
-        border: none;
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        background: goldenrod;
-    }
-
-    /*hide the outline behind the border*/
-    input[type=range]:-moz-focusring {
-        outline: 1px solid #000;
-        outline-offset: -1px;
-    }
-
-    input[type=range]::-ms-track {
-        width: 50%;
-        height: 5px;
-        /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
-        background: transparent;
-        /*leave room for the larger thumb to overflow with a transparent border */
-        border-color: transparent;
-        border-width: 6px 0;
-        /*remove default tick marks*/
-        color: #000;
-    }
-
-    input[type=range]::-ms-fill-lower {
-        background: #000;
-        border-radius: 10px;
-    }
-
-    input[type=range]::-ms-fill-upper {
-        background: #000;
-        border-radius: 10px;
-    }
-
-    input[type=range]::-ms-thumb {
-        border: none;
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        background: goldenrod;
-    }
-
-    input[type=range]:focus::-ms-fill-lower {
-        background: #000;
-    }
-
-    input[type=range]:focus::-ms-fill-upper {
-        background: #000;
-    }
+        input[type=range]:focus {
+            outline: none; 
+        }
