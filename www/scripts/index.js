@@ -92,13 +92,16 @@ $(document).ready(function () {
 
     $("#slidertriangle").on("touchcancel",function (event) {
         for (i = 1; i < 100; i++) {
-            op = op - 0.01;
+            op = op - 0.02;
             sizeX = sizeX + 10;
             sizeY = sizeY + 10;
-            setTimeout('$("#slidertriangle").css("border-left-width", ' + sizeX + ');', 5 * i - i);
-            setTimeout('$("#slidertriangle").css("border-bottom-width", ' + sizeY + ');', 5 * i - i);
-            setTimeout('$("#slidertriangle").css("opacity", ' + op + ');', 5 * i - i);
+            setTimeout('$("#slidertriangle").css("border-left-width", ' + sizeX + ');', 10 * i - i);
+            setTimeout('$("#slidertriangle").css("border-bottom-width", ' + sizeY + ');', 10 * i - i);
+            setTimeout('$("#slidertriangle").css("opacity", ' + op + ');', 10 * i - i);
         }
+        $("#slidertriangle").css("border-bottom-width", 100);
+        $("#slidertriangle").css("border-left-width", 100);
+        $("#slidertriangle").css("opacity", 1);
     });
 
     $(document).on("vmousemove",function (event) {
@@ -142,6 +145,10 @@ $(document).ready(function () {
             setTimeout('$("#slidertriangle").css("border-bottom-width", ' + sizeY + ');', 5 * i - i);
             setTimeout('$("#slidertriangle").css("opacity", ' + op + ');', 5 * i - i);
         }
+        $("#slidertriangle").css("border-bottom-width", 100);
+        $("#slidertriangle").css("border-left-width", 100);
+        $("#slidertriangle").css("opacity", 1);
+
     });
 
     $("#slidertriangle").on("vmouseout",function () {
