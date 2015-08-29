@@ -70,15 +70,27 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
     });
 });
 
-
-
+$(function(){
+   
+});
 
 $(document).ready(function () {
     var istriDragging = false;
     var startx = 0;
     var starty = 0;
     var triangleOpacity = 1;
-    var size = 100;
+    var size = 150;
+
+    var op = 1.00;
+
+    $("#imageTriangle").on("touchmove", function (event) {
+        op = op - 0.01;
+        size = size + 10;
+        //console.log("taphold");
+        $("#imageTriangle").css("width", size);
+        $("#imageTriangle").css("height", size);
+        $("#imageTriangle").css("opacity", op);
+    });
 
     $("#slidertriangle").on("vmousedown",function (event) {
         startx = event.pageX;
