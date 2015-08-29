@@ -101,10 +101,6 @@ $(document).ready(function () {
         }
     });
 
-    $("#slidertriangle").on("touchend",function (event) {
-        $("#slidertriangle").css("border-bottom-color", "#0000FF");
-    });
-
     $(document).on("vmousemove",function (event) {
         if (istriDragging) {
             var distanceY = starty - event.pageY;
@@ -134,10 +130,19 @@ $(document).ready(function () {
        $("#slidertriangle").css("border-bottom-width", 100);
        $("#slidertriangle").css("border-left-width", 100);
        $("#slidertriangle").css("opacity", 1);
-       $("#slidertriangle").css("border-bottom-color", "#000000");
         istriDragging = false;
     });
 
+    $("#slidertriangle").on("vmouseup", function (event) {
+        for (i = 1; i < 100; i++) {
+            op = op - 0.01;
+            sizeX = sizeX + 10;
+            sizeY = sizeY + 10;
+            setTimeout('$("#slidertriangle").css("border-left-width", ' + sizeX + ');', 5 * i - i);
+            setTimeout('$("#slidertriangle").css("border-bottom-width", ' + sizeY + ');', 5 * i - i);
+            setTimeout('$("#slidertriangle").css("opacity", ' + op + ');', 5 * i - i);
+        }
+    });
 
     $("#slidertriangle").on("vmouseout",function () {
         triangleOpacity = 1;
