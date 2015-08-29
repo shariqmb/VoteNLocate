@@ -89,9 +89,6 @@ $(document).ready(function () {
     $("#slidertriangle").on("vclick", function (event) { msg = msg + "T vclick - "; $("#txt").val(msg) });
     $("#slidertriangle").on("vmouseleave", function (event) { msg = msg + "T mouseleave - "; $("#txt").val(msg) });
     $("#slidertriangle").on("vmouseout", function (event) { msg = msg + "T vmouseout - "; $("#txt").val(msg) });
-    $("#slidertriangle").on("touchstart", function (event) { msg = msg + "T touchstart - "; $("#txt").val(msg) });
-    $("#slidertriangle").on("touchmove", function (event) { msg = msg + "T touchmove - "; $("#txt").val(msg) });
-    $("#slidertriangle").on("touchcancel", function (event) { msg = msg + "T touchcancel - "; $("#txt").val(msg) });
     $("#slidertriangle").on("touchend", function (event) { msg = msg + "T touchend- "; $("#txt").val(msg) });
 
     $(document).on("vmousedown", function (event) { msg = msg + "D vmousedown - "; $("#txt").val(msg) });
@@ -103,6 +100,48 @@ $(document).ready(function () {
     $(document).on("touchmove", function (event) { msg = msg + "D touchmove - "; $("#txt").val(msg) });
     $(document).on("touchcancel", function (event) { msg = msg + "D touchcancel - "; $("#txt").val(msg) });
     $(document).on("touchend", function (event) { msg = msg + "D touchend - "; $("#txt").val(msg) });
+
+
+    $("#slidertriangle").on("touchstart", function (event)
+    {
+        startx = event.pageX;
+        starty = event.pageY;
+
+        msg = msg + "T touchstart("+event.pageX+","+event.pageY+") - ";
+        $("#txt").val(msg);
+
+    });
+    $("#slidertriangle").on("touchmove", function (event)
+    {
+        msg = msg + "T touchmove (" + event.pageX + "," + event.pageY + ") - ";
+        $("#txt").val(msg);
+
+        var distanceY = starty - event.pageY;
+        var distanceX = startx - event.pageX;
+        //distance = distance * 10;
+
+        size = size + 200;
+        if (distanceX > 1 || distanceY > 1)
+            triangleOpacity = triangleOpacity - 0.02;
+        if (distanceX > 1)
+            $("#slidertriangle").css("border-left-width", size);
+        if (distanceY > 1)
+            $("#slidertriangle").css("border-bottom-width", size);
+        if (triangleOpacity > 0.1)
+            $("#slidertriangle").css("opacity", triangleOpacity);
+    });
+    $("#slidertriangle").on("touchcancel", function (event) {
+        msg = msg + "T touchcancel - "; $("#txt").val(msg);
+        for (i = 1; i < 100; i++) {
+            op = op - 0.02;
+            sizeX = sizeX + 10;
+            sizeY = sizeY + 10;
+            setTimeout('$("#slidertriangle").css("border-left-width", ' + sizeX + ');', 10 * i - i);
+            setTimeout('$("#slidertriangle").css("border-bottom-width", ' + sizeY + ');', 10 * i - i);
+            setTimeout('$("#slidertriangle").css("opacity", ' + op + ');', 10 * i - i);
+        }
+    });
+
 
     /*
     $("#slidertriangle").on("vmousedown",function (event) {
