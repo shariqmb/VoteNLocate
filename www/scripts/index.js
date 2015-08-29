@@ -83,21 +83,21 @@ $(document).ready(function () {
         startx = event.pageX;
         starty = event.pageY;
         istriDragging = true;
-    })
+    });
 
     $("#slidertriangle").on("touchmove",function (event) {
         $("#slidertriangle").css("border-bottom-color", "#FFFFFF");
-    })
+    });
 
     $("#slidertriangle").on("touchcancel",function (event) {
         $("#slidertriangle").css("border-bottom-color", "#00FF00");
-    })
+    });
 
     $("#slidertriangle").on("touchend",function (event) {
         $("#slidertriangle").css("border-bottom-color", "#0000FF");
-    })
+    });
 
-    .on("vmousemove",function (event) {
+    $(document).on("vmousemove",function (event) {
         if (istriDragging) {
             var distanceY = starty - event.pageY;
             var distanceX = startx - event.pageX;
@@ -111,17 +111,16 @@ $(document).ready(function () {
                 $("#slidertriangle").css("border-bottom-width", 100 + distanceY*10);
             if (triangleOpacity > 0.1)
                 $("#slidertriangle").css("opacity", triangleOpacity);
-            }
-            else {
-                $("#slidertriangle").css("border-bottom-width", 100);
-                $("#slidertriangle").css("border-left-width", 100);
-                $("#slidertriangle").css("opacity", 1);
-
-            }
         }
-    })
+        else {
+            $("#slidertriangle").css("border-bottom-width", 100);
+            $("#slidertriangle").css("border-left-width", 100);
+            $("#slidertriangle").css("opacity", 1);
 
-    .on("vmouseup",function () {
+        }
+    });
+
+    $(document).on("vmouseup", function () {
         triangleOpacity = 1;
        $("#slidertriangle").css("border-bottom-width", 100);
        $("#slidertriangle").css("border-left-width", 100);
