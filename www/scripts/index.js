@@ -29,11 +29,11 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
 
     var isDragging = false;
 
-    $("#sliderDensity").mousedown(function () {
+    $("#sliderDensity").vmousedown(function () {
         isDragging = true;
     })
 
-    .mousemove(function () {
+    .vmousemove(function () {
         if (isDragging)
         {
               //debugger;
@@ -45,7 +45,7 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
         }
     })
 
-    $("#sliderDensity").mouseup(function() {
+    $("#sliderDensity").vmouseup(function() {
         isDragging = false;
     });
 
@@ -79,12 +79,12 @@ $(document).ready(function () {
     var starty = 0;
     var triangleOpacity = 1;
 
-    $("#slidertriangle").mousedown(function (event) {
+    $("#slidertriangle").vmousedown(function (event) {
         starty = event.pageY;
         istriDragging = true;
     })
 
-    .mousemove(function (event) {
+    .vmousemove(function (event) {
         if (istriDragging) {
             var distance = starty - event.pageY;
             distance = distance * 4;
@@ -105,7 +105,7 @@ $(document).ready(function () {
         }
     })
 
-    $("#slidertriangle").mouseup(function () {
+    $("#slidertriangle").vmouseup(function () {
         triangleOpacity = 1;
        $("#slidertriangle").css("border-bottom-width", 100);
        $("#slidertriangle").css("border-left-width", 100);
@@ -115,7 +115,7 @@ $(document).ready(function () {
     });
 
 
-    $("#slidertriangle").mouseout(function () {
+    $("#slidertriangle").vmouseout(function () {
         triangleOpacity = 1;
         $("#slidertriangle").css("border-bottom-width", 100);
         $("#slidertriangle").css("border-left-width", 100);
@@ -124,7 +124,7 @@ $(document).ready(function () {
         istriDragging = false;
     });
 
-    $("#slidertriangle").mouseleave(function () {
+    $("#slidertriangle").vmouseleave(function () {
         triangleOpacity = 1;
         $("#slidertriangle").css("border-bottom-width", 100);
         $("#slidertriangle").css("border-left-width", 100);
