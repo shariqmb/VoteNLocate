@@ -79,21 +79,9 @@ $(document).ready(function () {
     var startx = 0;
     var starty = 0;
     var triangleOpacity = 1;
-    var size = 150;
-
-    var op = 1.00;
-
-    $("#imageTriangle").on("swipeleft", function (event) {
-        console.log("taphold");
-
-        for (i = 1; i < 100; i++) {
-            op = op - 0.01;
-            size = size + 10;
-            setTimeout('$("#imageTriangle").css("width", ' + size + ');', 5 * i-i);
-            setTimeout('$("#imageTriangle").css("height", ' + size + ');', 5 * i - i);
-            setTimeout('$("#imageTriangle").css("opacity", ' + op + ');', 5 * i - i);
-        }
-    });
+    var size = 100;
+    var sizeX = 120;
+    var sizeY = 120;
 
     $("#slidertriangle").on("vmousedown",function (event) {
         startx = event.pageX;
@@ -101,12 +89,16 @@ $(document).ready(function () {
         istriDragging = true;
     });
 
-    $("#slidertriangle").on("touchmove",function (event) {
-        $("#slidertriangle").css("border-bottom-color", "#FFFFFF");
-    });
 
     $("#slidertriangle").on("touchcancel",function (event) {
-        $("#slidertriangle").css("border-bottom-color", "#00FF00");
+        for (i = 1; i < 100; i++) {
+            op = op - 0.01;
+            sizeX = sizeX + 10;
+            sizeY = sizeY + 10;
+            setTimeout('$("#slidertriangle").css("border-left-width", ' + sizeX + ');', 5 * i - i);
+            setTimeout('$("#slidertriangle").css("border-bottom-width", ' + sizeY + ');', 5 * i - i);
+            setTimeout('$("#slidertriangle").css("opacity", ' + op + ');', 5 * i - i);
+        }
     });
 
     $("#slidertriangle").on("touchend",function (event) {
