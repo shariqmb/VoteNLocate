@@ -78,6 +78,7 @@ $(document).ready(function () {
     var startx = 0;
     var starty = 0;
     var triangleOpacity = 1;
+    var size = 100;
 
     $("#slidertriangle").on("vmousedown",function (event) {
         startx = event.pageX;
@@ -103,12 +104,13 @@ $(document).ready(function () {
             var distanceX = startx - event.pageX;
             //distance = distance * 10;
           
+            size = size + 200;
             if (distanceX > 1 || distanceY>1)
                 triangleOpacity = triangleOpacity-0.02;
             if(distanceX > 1)
-                $("#slidertriangle").css("border-left-width", 100 + distanceX * 10);
+                $("#slidertriangle").css("border-left-width", size);
             if(distanceY > 1)
-                $("#slidertriangle").css("border-bottom-width", 100 + distanceY*10);
+                $("#slidertriangle").css("border-bottom-width", size);
             if (triangleOpacity > 0.1)
                 $("#slidertriangle").css("opacity", triangleOpacity);
         }
