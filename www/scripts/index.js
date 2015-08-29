@@ -72,19 +72,19 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
 
 
 
-/*
+
 $(document).ready(function () {
 
     var istriDragging = false;
     var starty = 0;
     var triangleOpacity = 1;
 
-    $("#slidertriangle").vmousedown(function (event) {
+    $("#slidertriangle").on("vmousedown",function (event) {
         starty = event.pageY;
         istriDragging = true;
     })
 
-    .vmousemove(function (event) {
+    .on("vmousemove",function (event) {
         if (istriDragging) {
             var distance = starty - event.pageY;
             distance = distance * 4;
@@ -105,7 +105,7 @@ $(document).ready(function () {
         }
     })
 
-    $("#slidertriangle").vmouseup(function () {
+    $("#slidertriangle").on("vmouseup",function () {
         triangleOpacity = 1;
        $("#slidertriangle").css("border-bottom-width", 100);
        $("#slidertriangle").css("border-left-width", 100);
@@ -115,7 +115,7 @@ $(document).ready(function () {
     });
 
 
-    $("#slidertriangle").vmouseout(function () {
+    $("#slidertriangle").on("vmouseout",function () {
         triangleOpacity = 1;
         $("#slidertriangle").css("border-bottom-width", 100);
         $("#slidertriangle").css("border-left-width", 100);
@@ -124,7 +124,7 @@ $(document).ready(function () {
         istriDragging = false;
     });
 
-    $("#slidertriangle").vmouseleave(function () {
+    $("#slidertriangle").on("vmouseleave",function () {
         triangleOpacity = 1;
         $("#slidertriangle").css("border-bottom-width", 100);
         $("#slidertriangle").css("border-left-width", 100);
@@ -136,4 +136,3 @@ $(document).ready(function () {
 
 })
 
-*/
