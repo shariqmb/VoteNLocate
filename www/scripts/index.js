@@ -74,7 +74,7 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
 
 
 $(document).ready(function () {
-
+    $.vmouse.moveDistanceThreshold=1;
     var istriDragging = false;
     var starty = 0;
     var triangleOpacity = 1;
@@ -87,7 +87,7 @@ $(document).ready(function () {
     .on("vmousemove",function (event) {
         if (istriDragging) {
             var distance = starty - event.pageY;
-            distance = distance * 4;
+            distance = distance * 10;
           
             if (distance > 1) {
                 triangleOpacity = triangleOpacity-0.02;
@@ -124,14 +124,14 @@ $(document).ready(function () {
         istriDragging = false;
     });
 
-    $("#slidertriangle").on("vmouseleave",function () {
-        triangleOpacity = 1;
-        $("#slidertriangle").css("border-bottom-width", 100);
-        $("#slidertriangle").css("border-left-width", 100);
-        $("#slidertriangle").css("opacity", 1);
+    //$("#slidertriangle").on("vmouseleave",function () {
+    //    triangleOpacity = 1;
+    //    $("#slidertriangle").css("border-bottom-width", 100);
+    //    $("#slidertriangle").css("border-left-width", 100);
+    //    $("#slidertriangle").css("opacity", 1);
 
-        istriDragging = false;
-    });
+    //    istriDragging = false;
+    //});
 
 
 })
