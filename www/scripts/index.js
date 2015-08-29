@@ -74,26 +74,10 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
 
 
 $(document).ready(function () {
-    $.vmouse.moveDistanceThreshold=1;
     var istriDragging = false;
     var starty = 0;
     var triangleOpacity = 1;
 
-    $("#slidertriangle").on("swipe", function (event) {
-        for(i=1; i<20;i++)
-        {
-            $("#slidertriangle").css("border-bottom-width", 100 + (i*100));
-            $("#slidertriangle").css("border-left-width", 100 + (i * 100));
-            $("#slidertriangle").css("opacity", triangleOpacity);
-            triangleOpacity = triangleOpacity - 0.02;
-            setTimeout(function () { }, 5000);
-        }
-        triangleOpacity = 1;
-        $("#slidertriangle").css("border-bottom-width", 100 );
-        $("#slidertriangle").css("border-left-width", 100 );
-        $("#slidertriangle").css("opacity", triangleOpacity);
-    })
-    /*
     $("#slidertriangle").on("vmousedown",function (event) {
         starty = event.pageY;
         istriDragging = true;
@@ -120,7 +104,7 @@ $(document).ready(function () {
         }
     })
 
-    $("#slidertriangle").on("vmouseup",function () {
+    .on("vmouseup",function () {
         triangleOpacity = 1;
        $("#slidertriangle").css("border-bottom-width", 100);
        $("#slidertriangle").css("border-left-width", 100);
@@ -147,7 +131,7 @@ $(document).ready(function () {
 
     //    istriDragging = false;
     //});
-    */
+    
 
 })
 
