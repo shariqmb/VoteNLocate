@@ -29,11 +29,11 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
 
     var isDragging = false;
 
-    $("#sliderDensity").vmousedown(function () {
+    $("#sliderDensity").on("vmousedown",function () {
         isDragging = true;
     })
 
-    .vmousemove(function () {
+    .on("vmousemove",function () {
         if (isDragging)
         {
               //debugger;
@@ -45,7 +45,7 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
         }
     })
 
-    $("#sliderDensity").vmouseup(function() {
+    $("#sliderDensity").on("vmouseup",function() {
         isDragging = false;
     });
 
@@ -72,7 +72,7 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
 
 
 
-
+/*
 $(document).ready(function () {
 
     var istriDragging = false;
@@ -135,3 +135,5 @@ $(document).ready(function () {
 
 
 })
+
+*/
