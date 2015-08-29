@@ -26,13 +26,37 @@ $(document).delegate("#MapPage", "pageinit", function () {
 
 $(document).delegate("#VotePopUp", "pageinit", function () {
     LoadPopUp();
-    $("#sliderDensity").on("change", function () {
+
+    var isDragging = false;
+
+    $("#sliderDensity").mousedown(function () {
+        isDragging = true;
+    })
+
+    .mousemove(function () {
+        if (isDragging)
+        {
+              //debugger;
         var slideVal = parseInt($("#sliderDensity").val());
         densityValue = slideVal;
         $("#sliderDensityValue").val(slideVal);
         $("#sliderDensityValue").css("width", slideVal + 30);
         $("#sliderDensityValue").css("height", slideVal + 30);
+        }
+    })
+
+    $("#sliderDensity").mouseup(function() {
+        isDragging = false;
     });
+
+    //$("#sliderDensity").on("change", function () {
+    //    debugger;
+    //    var slideVal = parseInt($("#sliderDensity").val());
+    //    densityValue = slideVal;
+    //    $("#sliderDensityValue").val(slideVal);
+    //    $("#sliderDensityValue").css("width", slideVal + 30);
+    //    $("#sliderDensityValue").css("height", slideVal + 30);
+    //});
     $(".round").on("vclick", function () {
         colorPicker = $(this).css("background-color");
         qualityValue = $(this).val();
@@ -45,3 +69,69 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
         localStorage.setItem('voteTime', Date.now());
     });
 });
+
+
+
+
+$(document).ready(function () {
+
+    var istriDragging = false;
+    var starty = 0;
+    var triangleOpacity = 1;
+
+    $("#slidertriangle").mousedown(function (event) {
+        starty = event.pageY;
+        istriDragging = true;
+    })
+
+    .mousemove(function (event) {
+        if (istriDragging) {
+            var distance = starty - event.pageY;
+            distance = distance * 4;
+          
+            if (distance > 1) {
+                triangleOpacity = triangleOpacity-0.02;
+                $("#slidertriangle").css("border-bottom-width", 100 + distance);
+                $("#slidertriangle").css("border-left-width", 100 + distance);
+                if (triangleOpacity > 0.1)
+                $("#slidertriangle").css("opacity", triangleOpacity);
+            }
+            else {
+                $("#slidertriangle").css("border-bottom-width", 100);
+                $("#slidertriangle").css("border-left-width", 100);
+                $("#slidertriangle").css("opacity", 1);
+
+            }
+        }
+    })
+
+    $("#slidertriangle").mouseup(function () {
+        triangleOpacity = 1;
+       $("#slidertriangle").css("border-bottom-width", 100);
+       $("#slidertriangle").css("border-left-width", 100);
+       $("#slidertriangle").css("opacity", 1);
+
+        istriDragging = false;
+    });
+
+
+    $("#slidertriangle").mouseout(function () {
+        triangleOpacity = 1;
+        $("#slidertriangle").css("border-bottom-width", 100);
+        $("#slidertriangle").css("border-left-width", 100);
+        $("#slidertriangle").css("opacity", 1);
+
+        istriDragging = false;
+    });
+
+    $("#slidertriangle").mouseleave(function () {
+        triangleOpacity = 1;
+        $("#slidertriangle").css("border-bottom-width", 100);
+        $("#slidertriangle").css("border-left-width", 100);
+        $("#slidertriangle").css("opacity", 1);
+
+        istriDragging = false;
+    });
+
+
+})

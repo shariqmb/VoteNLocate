@@ -1,10 +1,7 @@
 ﻿<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
     <script src="scripts/Framework/jquery-1.11.2.min.js"></script>
     <script src="JQM/jquery.mobile-1.4.5.js"></script>
     <script src="scripts/appSetting.js"></script>
@@ -15,51 +12,9 @@
     <link href="css/index.css" rel="stylesheet" />
 </head>
 <body>
-    <!--Splash -->
-    <div data-role="page" id="SplashScreen">
-        <div class="pageTop">
-            <img src="images/image.png" id="LogoSplash" height="100" />
-        </div>
-        <div class="pageBottom">
-            <img src="images/image.png" id="PublicitySplash" height="250" />
-        </div>
-    </div>
-    <!--End Splash-->
-    <!--Main Map-->
-    <div data-role="page" data-add-back-btn="false" id="MapPage" style="overflow: hidden;">
-        <div data-role="header" id="headerMap" style="height: 41px;">
-            <div style="text-align: center;">
-                <img src="images/image.png" width="50" height="40" />
-            </div>
-            <a href="#HistoricalMap" class="ui-btn-right">H</a>
-        </div>
-        <div id="map"></div>
-        <div style="position: fixed; bottom: 50px; left: 0;">Text 1</div>
-        <div class="triangle-bottomright-main" id="slidertriangle"></div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-            <div style="text-align: center;">
-                <a href="#VotePopUp" data-rel="dialog" data-transition="none" data-role="button">Text 2</a>
-            </div>
-        </div>
-    </div>
-    <!--End Main Map-->
-    <!--Historical Map-->
-    <div data-role="page" data-add-back-btn="true" id="HistoricalMap" style="overflow: hidden;">
-        <div data-role="header" style="height: 41px;">
-            <div style="text-align: center;">
-                <img src="images/image.png" width="50" height="40" />
-            </div>
-            <a href="javascript:back();" data-icon="back" class="ui-btn-right">Back</a>
-        </div>
-        <iframe src="Pages/HistoricalMap.html" width="100%" onload="this.height = $(window).height()"></iframe>
-        <div style="position: fixed; bottom: 0; left: 0;">Text 3</div>
-        <div class="triangle-bottomright-hist"></div>
-    </div>
-    <!--End Historical Map-->
-    <!--Vote PopUp-->
     <div data-role="dialog" id="VotePopUp">
-        <div role="main" class="ui-content" style="background-color: rgba(0, 0, 0, 1); border-radius: inherit; height: 100%">
-            <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-left cancelbutton">Close</a>
+        <div data-role="content" class="ui-content">
+            <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
             <table id="dialogTable" style="width: 100%; padding-bottom: 20px; padding-top: 20px; height: 480px;">
                 <tr>
                     <td id="spanPopUpHead">Text 5</td>
@@ -67,17 +22,15 @@
                         <img id="imgPopUpTop" src="images/image.png" /></td>
                 </tr>
                 <tr>
-                    <td rowspan="10" style="padding-top: 50px;">
+                    <td rowspan="10">
                         <div style="height: 150px;">
-                            <div style="display: inline">
-                                <input id="sliderDensityValue" class="round" type="button" value="50" data-role="none" style="margin-top:-55px" />
-                            </div>
+                            <input id="sliderDensityValue" class="round" type="button" value="50" data-role="none" />
                         </div>
                         <div style="height: 50px;">
                             <input type="range" id="sliderDensity" min="1" max="100" value="50" data-role="none" />
                         </div>
                         <div style="height: 50px; padding-left: 10px;">
-                            <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" style="color: #6F6F6F;">Text 4</a>
+                            <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Text 4</a>
                         </div>
                     </td>
                     <td>
@@ -131,33 +84,17 @@
                     </td>
                 </tr>
             </table>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
         </div>
-        <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" style="max-width: 400px;">
-            <div role="main" class="ui-content" style="text-align: center;">
-                <h2 id="btnAlertMainHead">Text 6</h2>
+        <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
+            <div data-role="header" data-theme="a">
+                <h1 id="btnAlertMainHead">Text 6</h1>
+            </div>
+            <div role="main" class="ui-content">
                 <h3 id="spanAlertSubHead" class="ui-title">Text 7</h3>
                 <a id="btnAlertLeft" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Text 8</a>
                 <a id="btnAlertRight" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Text 9</a>
             </div>
         </div>
     </div>
-    <!--End Vote PopUp-->
-    <script src="cordova.js"></script>
 </body>
 </html>

@@ -3055,12 +3055,12 @@ fieldset.ui-controlgroup {
 	 background: none !important; /* this is to ensure that dialog theming does not apply (by default at least) on the page div */
 }
 .ui-dialog-contain {
-	width: 92.5%;
+	/*width: 92.5%;
 	max-width: 500px;
-	margin: 10% auto 1em auto;
+	margin: 10% auto 1em auto;*/
 	padding: 0;
 	position: relative;
-	top: -1em;
+	/*top: 2em;*/
 }
 .ui-dialog-contain > .ui-header, 
 .ui-dialog-contain > .ui-content, 
