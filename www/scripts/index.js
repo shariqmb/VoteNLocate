@@ -83,13 +83,16 @@ $(document).ready(function () {
 
     var op = 1.00;
 
-    $("#imageTriangle").on("touchmove", function (event) {
-        op = op - 0.01;
-        size = size + 10;
-        //console.log("taphold");
-        $("#imageTriangle").css("width", size);
-        $("#imageTriangle").css("height", size);
-        $("#imageTriangle").css("opacity", op);
+    $("#imageTriangle").on("swipeleft", function (event) {
+        console.log("taphold");
+
+        for (i = 1; i < 100; i++) {
+            op = op - 0.01;
+            size = size + 10;
+            setTimeout('$("#imageTriangle").css("width", ' + size + ');', 5 * i-i);
+            setTimeout('$("#imageTriangle").css("height", ' + size + ');', 5 * i - i);
+            setTimeout('$("#imageTriangle").css("opacity", ' + op + ');', 5 * i - i);
+        }
     });
 
     $("#slidertriangle").on("vmousedown",function (event) {
