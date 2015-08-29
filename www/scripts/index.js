@@ -85,17 +85,31 @@ $(document).ready(function () {
         istriDragging = true;
     })
 
+    $("#slidertriangle").on("touchmove",function (event) {
+        $("#slidertriangle").css("border-bottom-color", "#FFFFFF");
+    })
+
+    $("#slidertriangle").on("touchcancel",function (event) {
+        $("#slidertriangle").css("border-bottom-color", "#00FF00");
+    })
+
+    $("#slidertriangle").on("touchend",function (event) {
+        $("#slidertriangle").css("border-bottom-color", "#0000FF");
+    })
+
     .on("vmousemove",function (event) {
         if (istriDragging) {
             var distanceY = starty - event.pageY;
             var distanceX = startx - event.pageX;
             //distance = distance * 10;
           
-            if (distanceX > 1 || distanceY>1) {
+            if (distanceX > 1 || distanceY>1)
                 triangleOpacity = triangleOpacity-0.02;
+            if(distanceX > 1)
+                $("#slidertriangle").css("border-left-width", 100 + distanceX * 10);
+            if(distanceY > 1)
                 $("#slidertriangle").css("border-bottom-width", 100 + distanceY*10);
-                $("#slidertriangle").css("border-left-width", 100 + distanceX*10);
-                if (triangleOpacity > 0.1)
+            if (triangleOpacity > 0.1)
                 $("#slidertriangle").css("opacity", triangleOpacity);
             }
             else {
