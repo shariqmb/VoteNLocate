@@ -82,7 +82,29 @@ $(document).ready(function () {
     var size = 100;
     var sizeX = 120;
     var sizeY = 120;
+    var msg = " ";
 
+    $("#slidertriangle").on("vmousedown", function (event) { msg = msg + "T vmousedown - "; $("#txt").val(msg)});
+    $("#slidertriangle").on("vmouseup", function (event) { msg = msg + "T vmouseup - "; $("#txt").val(msg) });
+    $("#slidertriangle").on("vclick", function (event) { msg = msg + "T vclick - "; $("#txt").val(msg) });
+    $("#slidertriangle").on("vmouseleave", function (event) { msg = msg + "T mouseleave - "; $("#txt").val(msg) });
+    $("#slidertriangle").on("vmouseout", function (event) { msg = msg + "T vmouseout - "; $("#txt").val(msg) });
+    $("#slidertriangle").on("touchstart", function (event) { msg = msg + "T touchstart - "; $("#txt").val(msg) });
+    $("#slidertriangle").on("touchmove", function (event) { msg = msg + "T touchmove - "; $("#txt").val(msg) });
+    $("#slidertriangle").on("touchcancel", function (event) { msg = msg + "T touchcancel - "; $("#txt").val(msg) });
+    $("#slidertriangle").on("touchend", function (event) { msg = msg + "T touchend- "; $("#txt").val(msg) });
+
+    $(document).on("vmousedown", function (event) { msg = msg + "D vmousedown - "; $("#txt").val(msg) });
+    $(document).on("vmouseup", function (event) { msg = msg + "D vmouseup- "; $("#txt").val(msg) });
+    $(document).on("vclick", function (event) { msg = msg + "D vclick - "; $("#txt").val(msg) });
+    $(document).on("vmouseleave", function (event) { msg = msg + "D vmouseleave - "; $("#txt").val(msg) });
+    $(document).on("vmouseout", function (event) { msg = msg + "D vmouseout - "; $("#txt").val(msg) });
+    $(document).on("touchstart", function (event) { msg = msg + "D touchstart - "; $("#txt").val(msg) });
+    $(document).on("touchmove", function (event) { msg = msg + "D touchmove - "; $("#txt").val(msg) });
+    $(document).on("touchcancel", function (event) { msg = msg + "D touchcancel - "; $("#txt").val(msg) });
+    $(document).on("touchend", function (event) { msg = msg + "D touchend - "; $("#txt").val(msg) });
+
+    /*
     $("#slidertriangle").on("vmousedown",function (event) {
         startx = event.pageX;
         starty = event.pageY;
@@ -152,6 +174,7 @@ $(document).ready(function () {
     });
 
     $("#slidertriangle").on("vmouseout",function () {
+        
         triangleOpacity = 1;
         $("#slidertriangle").css("border-bottom-width", 100);
         $("#slidertriangle").css("border-left-width", 100);
@@ -159,7 +182,7 @@ $(document).ready(function () {
 
         istriDragging = false;
     });
-
+    */
     //$("#slidertriangle").on("vmouseleave",function () {
     //    triangleOpacity = 1;
     //    $("#slidertriangle").css("border-bottom-width", 100);
