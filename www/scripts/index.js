@@ -75,23 +75,26 @@ $(document).delegate("#VotePopUp", "pageinit", function () {
 
 $(document).ready(function () {
     var istriDragging = false;
+    var startx = 0;
     var starty = 0;
     var triangleOpacity = 1;
 
     $("#slidertriangle").on("vmousedown",function (event) {
+        startx = event.pageX;
         starty = event.pageY;
         istriDragging = true;
     })
 
     .on("vmousemove",function (event) {
         if (istriDragging) {
-            var distance = starty - event.pageY;
-            distance = distance * 10;
+            var distanceY = starty - event.pageY;
+            var distanceX = startx - event.pageX;
+            //distance = distance * 10;
           
-            if (distance > 1) {
+            if (distanceX > 1 || distanceY>1) {
                 triangleOpacity = triangleOpacity-0.02;
-                $("#slidertriangle").css("border-bottom-width", 100 + distance);
-                $("#slidertriangle").css("border-left-width", 100 + distance);
+                $("#slidertriangle").css("border-bottom-width", 100 + distanceY*10);
+                $("#slidertriangle").css("border-left-width", 100 + distanceX*10);
                 if (triangleOpacity > 0.1)
                 $("#slidertriangle").css("opacity", triangleOpacity);
             }
@@ -109,7 +112,7 @@ $(document).ready(function () {
        $("#slidertriangle").css("border-bottom-width", 100);
        $("#slidertriangle").css("border-left-width", 100);
        $("#slidertriangle").css("opacity", 1);
-
+       $("#slidertriangle").css("border-bottom-color", "#000000");
         istriDragging = false;
     });
 
