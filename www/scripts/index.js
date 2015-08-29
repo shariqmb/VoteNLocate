@@ -104,20 +104,20 @@ $(document).ready(function () {
 
     $("#slidertriangle").on("touchstart", function (event)
     {
-        startx = event.originalEvent.clientX;
-        starty = event.originalEvent.clientY;
+        startx = event.originalEvent.touches[0].pageX;
+        starty = event.originalEvent.touches[0].pageY;
 
-        msg = msg + "T touchstart(" + event.originalEvent.clientX + "," + event.originalEvent.clientY+ ") - ";
+        msg = msg + "T touchstart(" + event.originalEvent.touches[0].pageX + "," + event.originalEvent.touches[0].pageY + ") - ";
         $("#txt").val(msg);
 
     });
     $("#slidertriangle").on("touchmove", function (event)
     {
-        msg = msg + "T touchmove (" + event.originalEvent.clientX + "," + event.originalEvent.clientY+ ") - ";
+        msg = msg + "T touchmove (" + event.originalEvent.touches[0].pageX + "," + event.originalEvent.touches[0].pageY + ") - ";
         $("#txt").val(msg);
 
-        var distanceY = starty - event.originalEvent.clientY;
-        var distanceX = startx - event.originalEvent.clientX;
+        var distanceY = starty - event.originalEvent.touches[0].pageY;
+        var distanceX = startx - event.originalEvent.touches[0].pageX;
         //distance = distance * 10;
 
         size = size + 200;
