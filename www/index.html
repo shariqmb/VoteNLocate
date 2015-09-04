@@ -13,8 +13,58 @@
     <script src="scripts/helpingMethods.js"></script>
     <link href="JQM/jquery.mobile-1.4.5.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
+    
+    <style>
+.mycnt{
+	 width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	position: absolute; 
+	 top: 0;
+	left: 0;
+	    z-index: 1;
+}
+.mycnt #container{
+	width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+	padding:0;
+}
+.mycnt #resizable{ 
+	padding: 0; 
+	width:100px;
+	height:100px;
+	position:relative;
+    background: transparent;
+	border:0;
+ }
+.mycnt #resizable .redbox{
+	width: 0;
+    height: 0;
+    border-bottom: 100px solid red;
+    border-left: 100px solid transparent;
+    position: absolute;
+    bottom: 0;
+    right: 0;		
+	cursor: nw-resize;
+	left:0;
+	top:0;
+}
+.triangle-bottomright-main{display:none;}
+
+.regionbox{position:relative; display:none;  }
+
+
+.infobox{position:fixed;top:0;left:0;padding:5px;;background:#fff;border:1px solid red;z-index:99999999;font-size:18px;color:#000;display:none;}
+
+</style> 
+    
 </head>
 <body>
+
+<div class="infobox"></div>
+
     <!--Splash -->
     <div data-role="page" id="SplashScreen">
         <div class="pageTop">
@@ -27,15 +77,31 @@
     <!--End Splash-->
     <!--Main Map-->
     <div data-role="page" data-add-back-btn="false" id="MapPage" style="overflow: hidden;">
+        
         <div data-role="header" id="headerMap" style="height: 41px;">
             <div style="text-align: center;">
                 <img src="images/image.png" width="50" height="40" />
             </div>
             <a href="#HistoricalMap" class="ui-btn-right">H</a>
         </div>
+        
+        <div class="regionbox">
+        <div class="mycnt">
+	<div id="container" class="ui-widget-content">
+		<div id="resizable" class="ui-state-active">
+        	<div class="redbox ui-resizable-handle ui-resizable-nw"></div>
+        </div>
+	</div>
+</div>
         <div id="map"></div>
+        
+        
+        
         <div style="position: fixed; bottom: 50px; left: 0;">Text 1</div>
         <div class="triangle-bottomright-main"  id="slidertriangle"></div>
+        
+        </div>
+        
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
             <div style="text-align: center;">
                 <a href="#VotePopUp" data-rel="dialog" data-transition="none" data-role="button">Text 2</a>
@@ -52,6 +118,7 @@
             <a href="javascript:back();" data-icon="back" class="ui-btn-right">Back</a>
         </div>
         <iframe src="Pages/HistoricalMap.html" width="100%" onload="this.height = $(window).height()"></iframe>
+        
         <div style="position: fixed; bottom: 0; left: 0;">Text 3</div>
         <div class="triangle-bottomright-hist"></div>
     </div>
@@ -165,74 +232,21 @@
   
 
 <script src="scripts/jquery-ui.js"></script>
-  
-<style>
-.mycnt{
-	 width: 100%;
-	height: 75.5%;
-	box-sizing: border-box;
-	position: relative; 
-	 top: 45px;
-	left: 0;
-}
-.mycnt #container{
-	width: 100%;
-    height: 100%;
-    border: 0;
-    background: transparent;
-	padding:0;
-}
-.mycnt #resizable{ 
-	padding: 0; 
-	width:100px;
-	height:100px;
-	position:relative;
-    background: transparent;
-	border:0;
- }
-.mycnt #resizable .redbox{
-	width: 0;
-    height: 0;
-    border-bottom: 100px solid red;
-    border-left: 100px solid transparent;
-    position: absolute;
-    bottom: 0;
-    right: 0;		
-	cursor: nw-resize;
-	left:0;
-	top:0;
-}
-.triangle-bottomright-main{display:none;}
-
-
-</style> 
-  
-<div class="mycnt">
-	<div id="container" class="ui-widget-content">
-		<div id="resizable" class="ui-state-active">
-        	<div class="redbox ui-resizable-handle ui-resizable-nw"></div>
-        </div>
-	</div>
-</div>
 
 <script>
 $(function() {
-
-
-	$("#resizable").resizable({
-		minHeight: 100,
-		minWidth: 100,
-		containment: "#container",
-		handles: {
-			'nw': '.redbox'
-		},
-		resize: function (event) {
-			
-		}
-	});
 	
-	resetbox();
+	resizReset();
 	
+	setTimeout(function(){
+		$(".mycnt #resizable").css({	
+			'left': parseInt( $('html').attr('data-cwidth') - 100 ),
+			'top': parseInt( $('html').attr('data-cheight')  - 100 )
+		});	
+	},500);
+	
+	
+
 	$('.mycnt #resizable').resize(function(e) {	
 		var $this = $(this);	
 		var wts = $this.width() ;
@@ -242,34 +256,47 @@ $(function() {
 			'border-bottom-width':  wth
 		});
     });
+	
+	
+	$("#resizable").resizable({
+		minHeight: 100,
+		minWidth: 100,
+		containment: "#container",
+		handles: {
+			'nw': '.redbox'
+		},
+		resize: function (event) {
+			resizReset();
+			
+			setTimeout(function(){
+				//$(".mycnt #resizable").css({	
+					//'left': parseInt( $('html').attr('data-cwidth')),
+					//'top': parseInt( $('html').attr('data-cheight'))
+				//});	
+			},500);
+		
+//			$('.infobox').html('Width: '+ wt + ' Height: ' + wh + ' Left:' + setr + ' Top: '+ setb);
+		}
+	});
 
 });
 
-$(window).resize(function(e) {
-    var wt = $(window).outerWidth();
-	var wh = $(window).outerHeight();
-	
-	$('.mycnt').width( wt );
-	$('.mycnt').height( wh -92 );
-	
-	var setr = wt - $(".mycnt #resizable").width();
-	var setb = wh - $(".mycnt #resizable").height()- 92;
+
+$( window ).on( "resize", function( event ) {
+	resizReset();
 });
 
-function resetbox(){
-	var wt = $(window).outerWidth();
-	var wh = $(window).outerHeight();
-	
-	var setr = wt - $(".mycnt #resizable").width();
-	var setb = wh - $(".mycnt #resizable").height()- 92;
-	
-	$('.mycnt').width( wt );
-	$('.mycnt').height( wh -92 );
-	
-	$(".mycnt #resizable").css({
-		'left': setr,
-		'top': setb
-	});	
+$( window ).on( "orientationchange", function( event ) {
+	location.reload();
+});
+
+function resizReset(){
+	setTimeout(function(){
+		$('.regionbox').fadeIn();
+		$('html').attr('data-cwidth', $('.regionbox').width() );
+		$('html').attr('data-cheight', $('.ui-mobile .ui-page').height() );			
+		
+	},500);
 }
 
 
