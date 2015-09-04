@@ -62,9 +62,6 @@
     
 </head>
 <body>
-
-<div class="infobox"></div>
-
     <!--Splash -->
     <div data-role="page" id="SplashScreen">
         <div class="pageTop">
@@ -77,15 +74,13 @@
     <!--End Splash-->
     <!--Main Map-->
     <div data-role="page" data-add-back-btn="false" id="MapPage" style="overflow: hidden;">
-        
         <div data-role="header" id="headerMap" style="height: 41px;">
             <div style="text-align: center;">
                 <img src="images/image.png" width="50" height="40" />
             </div>
             <a href="#HistoricalMap" class="ui-btn-right">H</a>
         </div>
-        
-        <div class="regionbox">
+         <div class="regionbox">
         <div class="mycnt">
 	<div id="container" class="ui-widget-content">
 		<div id="resizable" class="ui-state-active">
@@ -284,6 +279,7 @@ $(function() {
 
 $( window ).on( "resize", function( event ) {
 	resizReset();
+	
 });
 
 $( window ).on( "orientationchange", function( event ) {
